@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_colorata/widgets/meal_tile.dart';
+import 'package:colored_layout/widgets/meal_tile.dart';
 
 class MealsList extends StatelessWidget {
   const MealsList({

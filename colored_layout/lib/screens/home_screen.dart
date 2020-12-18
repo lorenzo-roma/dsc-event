@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_colorata/widgets/home_title.dart';
-import 'package:home_colorata/widgets/stream_list.dart';
+import 'package:colored_layout/widgets/home_title.dart';
+import 'package:colored_layout/widgets/stream_list.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:home_colorata/widgets/meals_list.dart';
-import 'package:home_colorata/widgets/stream_title.dart';
+import 'package:colored_layout/widgets/meals_list.dart';
+import 'package:colored_layout/widgets/stream_title.dart';
 
 class StreamContainer extends StatelessWidget {
   const StreamContainer({

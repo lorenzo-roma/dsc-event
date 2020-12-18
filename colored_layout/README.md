@@ -1,4 +1,4 @@
-# home_colorata
+# colored_layout
 
 A new Flutter project.
 

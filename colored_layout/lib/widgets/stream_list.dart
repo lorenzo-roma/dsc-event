@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_colorata/widgets/stream_container.dart';
+import 'package:colored_layout/widgets/stream_container.dart';
 
 class StreamList extends StatelessWidget {
   const StreamList({

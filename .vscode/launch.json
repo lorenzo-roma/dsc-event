@@ -11,8 +11,8 @@
             "type": "dart"
         },
         {
-            "name": "home_colorata",
-            "cwd": "home_colorata",
+            "name": "colored_layout",
+            "cwd": "colored_layout",
             "request": "launch",
             "type": "dart"
         },

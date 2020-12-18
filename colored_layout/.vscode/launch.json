@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "home_colorata",
+            "name": "colored_layout",
             "request": "launch",
             "type": "dart"
         }
