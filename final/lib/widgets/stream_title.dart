@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/icons/meals_icons_icons.dart';
 
 class StreamTitle extends StatelessWidget {
   const StreamTitle({
