@@ -7,26 +7,33 @@ class MealsService {
   static const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/';
 
   static Future<List<CategoryMeals>> getHomeMeals() async {
-    List<String> categoryNames = await fetchCategoriesNames();
-    List<CategoryMeals> list = await buildCategoryMeals(categoryNames);
+    List<Map<String, String>> categoryData = await fetchCategoriesData();
+    List<CategoryMeals> list = await buildCategoryMeals(categoryData);
     return list;
   }
 
-  static Future<List<String>> fetchCategoriesNames() async {
+  static Future<List<Map<String, String>>> fetchCategoriesData() async {
     var response = await http.get('${BASE_URL}categories.php');
     var categories = json.decode(response.body)['categories'];
-    List<String> list = List<String>.from(
-        categories.map((category) => category['strCategory']));
+    List<Map<String, String>> list =
+        List<Map<String, String>>.from(categories.map((category) => {
+              'name': category['strCategory'] as String,
+              'img': category['strCategoryThumb'] as String
+            }));
     return list;
   }
 
   static Future<List<CategoryMeals>> buildCategoryMeals(
-      List<String> categoryNames) async {
-    var res = await Future.wait(categoryNames.map((name) async {
+      List<Map<String, String>> categoryData) async {
+    var res = await Future.wait(categoryData.map((data) async {
+      String name = data['name'];
+      String imgUrl = data['img'];
       var response = await http.get('${BASE_URL}filter.php?c=$name');
       var mealsEntities = json.decode(response.body)['meals'];
       return CategoryMeals(
-          categoryTitle: name, meals: getMealsFromEntities(mealsEntities));
+          categoryTitle: name,
+          categoryImage: imgUrl,
+          meals: getMealsFromEntities(mealsEntities));
     }));
     return List<CategoryMeals>.from(res);
   }

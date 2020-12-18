@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/category_meals.dart';
+import 'package:meals_app/services/meal_service.dart';
 import 'package:meals_app/widgets/stream_container.dart';
 
 class StreamsList extends StatelessWidget {
-  const StreamsList({
+  StreamsList({
     Key key,
-    @required this.streams,
   }) : super(key: key);
 
-  final List<CategoryMeals> streams;
+  final List<CategoryMeals> streams = MealsService.getHomeMeals();
 
   @override
   Widget build(BuildContext context) {
