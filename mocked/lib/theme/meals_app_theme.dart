@@ -32,7 +32,8 @@ class MealsAppTheme {
         bodyText1: TextStyle(fontSize: 18, color: textMain),
         headline4: TextStyle(
             fontSize: 36, color: textMain, fontWeight: FontWeight.w700),
-        headline5: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+        headline5: TextStyle(
+            fontSize: 24, fontWeight: FontWeight.w600, color: textMain),
         caption: TextStyle(
             fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
       ));

@@ -9,7 +9,7 @@ class Meal {
 
   Meal.mock() {
     this.id = '0';
-    this.title = 'Title';
+    this.title = 'Spaghetti Carbonara';
     this.imgUrl = defaultImage;
   }
 }
