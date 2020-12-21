@@ -36,5 +36,9 @@ class MealsAppTheme {
             fontSize: 24, fontWeight: FontWeight.w600, color: textMain),
         caption: TextStyle(
             fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+        button: TextStyle(
+            fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+        subtitle1: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white),
       ));
 }

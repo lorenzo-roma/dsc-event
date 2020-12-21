@@ -38,8 +38,8 @@ class MealsService {
     return List<CategoryMeals>.from(res);
   }
 
-  static List<Meal> getMealsFromEntities(mealsEntities) {
-    return List<Meal>.from(mealsEntities.map((meal) {
+  static List<Meal> getMealsFromEntities(Iterable<dynamic> mealsEntities) {
+    return List<Meal>.from(mealsEntities.take(10).map((meal) {
       return Meal(
           id: meal['idMeal'],
           title: meal['strMeal'],
