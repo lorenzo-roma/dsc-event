@@ -23,6 +23,33 @@ class MealsService {
     return list;
   }
 
+  static List<Ingredient> buildIngredients(dynamic meal) {
+    final List<Ingredient> toReturn = [];
+    for (int i = 0; i < 20; i++) {
+      if (meal['strIngredient$i'] != null &&
+          meal['strMeasure$i'] != null &&
+          meal['strIngredient$i'] != "" &&
+          meal['strMeasure$i'] != "") {
+        print(meal['strIngredient$i']);
+        toReturn.add(new Ingredient(
+            measure: meal['strMeasure$i'], name: meal['strIngredient$i']));
+      }
+    }
+    return toReturn;
+  }
+
+  static Future<Meal> getMealDetail(String id) async {
+    var response = await http.get('${BASE_URL}lookup.php?i=52772');
+    var meal = json.decode(response.body)['meals'][0];
+    final ingredients = buildIngredients(meal);
+    return Meal(
+        id: meal['idMeal'],
+        title: meal['strMeal'],
+        imgUrl: meal['strMealThumb'],
+        instructions: meal['strInstructions'],
+        ingredients: ingredients);
+  }
+
   static Future<List<CategoryMeals>> buildCategoryMeals(
       List<Map<String, String>> categoryData) async {
     var res = await Future.wait(categoryData.map((data) async {

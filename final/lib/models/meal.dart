@@ -21,6 +21,8 @@ class Ingredient {
   String name;
   String measure;
 
+  Ingredient({this.name, this.measure});
+
   Ingredient.mock() {
     this.name = "prova";
     this.measure = "10";

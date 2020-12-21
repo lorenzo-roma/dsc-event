@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/services/meal_service.dart';
 
 class MealDetailScreen extends StatelessWidget {
   final Meal meal;
@@ -14,24 +15,36 @@ class MealDetailScreen extends StatelessWidget {
       body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) =>
               [AppBar(meal: meal)],
-          body: Padding(
-            padding: const EdgeInsets.all(22.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IngredientsTitle(),
-                Ingredients(meal: meal),
-                AddToCartButton(),
-                Text(
-                  "Instructions",
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                Text(
-                  meal.instructions,
-                  style: Theme.of(context).textTheme.bodyText2,
-                )
-              ],
-            ),
+          body: FutureBuilder(
+            future: MealsService.getMealDetail(meal.id),
+            builder: (context, snapshot) {
+              print(snapshot.error);
+              if (snapshot.hasData) {
+                final meal = snapshot.data;
+                return Padding(
+                  padding: const EdgeInsets.all(22.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IngredientsTitle(),
+                      Ingredients(meal: meal),
+                      AddToCartButton(),
+                      Text(
+                        "Instructions",
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                      Text(
+                        meal.instructions,
+                        style: Theme.of(context).textTheme.bodyText2,
+                      )
+                    ],
+                  ),
+                );
+              } else
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+            },
           )),
     );
   }
@@ -82,6 +95,7 @@ class Ingredients extends StatelessWidget {
             ))
         .toList();
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Column(
