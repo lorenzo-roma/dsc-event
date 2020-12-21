@@ -72,18 +72,30 @@ class Ingredients extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      mainAxisSpacing: 5,
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
-      childAspectRatio: 10,
-      children: meal.ingredients
-          .map((ingredient) => Text(
+    final ingredients = meal.ingredients
+        .map((ingredient) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: Text(
                 "• ${ingredient.name} (${ingredient.measure})",
                 style: Theme.of(context).textTheme.bodyText2,
-              ))
-          .toList(),
+              ),
+            ))
+        .toList();
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: ingredients.sublist(0, meal.ingredients.length ~/ 2),
+          ),
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: ingredients.sublist(meal.ingredients.length ~/ 2),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -105,7 +117,19 @@ class IngredientsTitle extends StatelessWidget {
             style: Theme.of(context).textTheme.headline5,
           ),
           Row(
-            children: [Icon(Icons.person_add_alt_1_rounded), Text("4")],
+            children: [
+              Icon(Icons.person_add),
+              Chip(
+                label: Text(
+                  "4",
+                  style: Theme.of(context)
+                      .textTheme
+                      .button
+                      .copyWith(color: Colors.white),
+                ),
+                backgroundColor: Theme.of(context).colorScheme.primary,
+              ),
+            ],
           )
         ],
       ),

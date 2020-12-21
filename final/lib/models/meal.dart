@@ -8,7 +8,7 @@ class Meal {
   List<Ingredient> ingredients =
       List.generate(10, (index) => Ingredient.mock());
   String instructions = "Lorem Ipsum";
-  Meal({this.id, this.title, this.imgUrl});
+  Meal({this.id, this.title, this.imgUrl, this.ingredients, this.instructions});
 
   Meal.mock() {
     this.id = '0';

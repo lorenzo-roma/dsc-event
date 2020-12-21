@@ -13,6 +13,12 @@ class MealsAppTheme {
 
   static ThemeData getTheme() => ThemeData(
       fontFamily: 'Montserrat',
+      chipTheme: ChipThemeData.fromDefaults(
+          labelStyle: TextStyle(
+              fontSize: 16, color: textMain, fontWeight: FontWeight.w700),
+          secondaryColor: Colors.white,
+          primaryColor: active),
+      buttonTheme: ButtonThemeData().copyWith(buttonColor: active),
       colorScheme: ColorScheme(
         primary: active,
         primaryVariant: activeDisabled,
@@ -30,6 +36,8 @@ class MealsAppTheme {
       ),
       textTheme: TextTheme(
         bodyText1: TextStyle(fontSize: 18, color: textMain),
+        bodyText2: TextStyle(
+            fontSize: 14, color: textMain, fontWeight: FontWeight.w500),
         headline4: TextStyle(
             fontSize: 36, color: textMain, fontWeight: FontWeight.w700),
         headline5: TextStyle(
