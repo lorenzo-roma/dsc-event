@@ -23,22 +23,24 @@ class MealDetailScreen extends StatelessWidget {
                 final meal = snapshot.data;
                 return Padding(
                   padding: const EdgeInsets.all(22.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IngredientsTitle(),
-                      Ingredients(meal: meal),
-                      AddToCartButton(),
-                      Text(
-                        "Instructions",
-                        style: Theme.of(context).textTheme.headline5,
-                      ),
-                      SizedBox(height: 20),
-                      Text(
-                        meal.instructions,
-                        style: Theme.of(context).textTheme.bodyText2,
-                      )
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IngredientsTitle(),
+                        Ingredients(meal: meal),
+                        AddToCartButton(),
+                        Text(
+                          "Instructions",
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          meal.instructions,
+                          style: Theme.of(context).textTheme.bodyText2,
+                        )
+                      ],
+                    ),
                   ),
                 );
               } else
