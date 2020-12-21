@@ -33,6 +33,7 @@ class MealDetailScreen extends StatelessWidget {
                         "Instructions",
                         style: Theme.of(context).textTheme.headline5,
                       ),
+                      SizedBox(height: 20),
                       Text(
                         meal.instructions,
                         style: Theme.of(context).textTheme.bodyText2,
@@ -58,17 +59,30 @@ class AddToCartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 24.0),
       child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         color: Theme.of(context).colorScheme.primary,
         textColor: Colors.white,
         onPressed: () => null,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.shopping_cart_outlined),
-            Text("Add to shopping list")
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.shopping_cart_outlined),
+              SizedBox(width: 16),
+              Text(
+                "Add to shopping list",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2
+                    .copyWith(color: Colors.white),
+              )
+            ],
+          ),
         ),
       ),
     );
