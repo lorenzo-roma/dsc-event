@@ -119,18 +119,54 @@ class IngredientsTitle extends StatelessWidget {
           Row(
             children: [
               Icon(Icons.person_add),
-              Chip(
-                label: Text(
-                  "4",
-                  style: Theme.of(context)
-                      .textTheme
-                      .button
-                      .copyWith(color: Colors.white),
-                ),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-              ),
+              NumberChip(),
             ],
           )
+        ],
+      ),
+    );
+  }
+}
+
+class NumberChip extends StatelessWidget {
+  const NumberChip({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Row(
+        children: [
+          Container(
+              height: 25,
+              width: 30,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    bottomLeft: Radius.circular(10)),
+              ),
+              child: Center(
+                  child: Text('4',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText2
+                          .copyWith(color: Colors.white)))),
+          SizedBox(width: 1),
+          Container(
+              height: 25,
+              width: 25,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10),
+                    bottomRight: Radius.circular(10)),
+              ),
+              child: Center(
+                  child: Icon(Icons.arrow_drop_down,
+                      size: 20, color: Colors.white)))
         ],
       ),
     );
